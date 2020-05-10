@@ -5,9 +5,8 @@ Abaixo segue o descritivo sobre o challenge do James Deivery. Houve a necessidad
 Todos os recursos de lambda e SQS foram criada na região de Ohio (us-east-2) a fim de ficar mais próximo geograficamente do bucket e evitar latência de rede.
 
 ## Funções Lambda
-
 Nome | Descrição | Código Fonte | Trigger | Variável de ambiente
-:--------- | :------ | :------- | :------- | :------- | :-------
+:--------- | :------ | :------- | :------- | :------- |
 tv-sentFromApiGatewayToSqs | Recebe o body do API Gateway e envia para uma fila FIFO | lambda-functions/tv-sentFromApiGatewayToSqs.js | API Gateway ```tv-api``` | SQS_QUEUE_URL
 tv-sentAssortmentToS3 | Envia mensagem da fila SQS para S3 | lambda-functions/tv-sentAssortmentToS3.js | Fila SQS ```tv-body-assortment.fifo``` | S3_BUCKET_NAME
 tv-sentToSQSFromS3JSONByProductCategories | Le o json de assortments e envia para fila SQS ```tv-process-product-category.fifo``` por categoria | lambda-functions/tv-sentToSQSFromS3JSONByProductCategories.js | Evento PUT do S3. Bucket ```james-s3-bucket-assortment``` | SQS_QUEUE_URL
